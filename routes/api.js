@@ -6,6 +6,12 @@ const jwt = require('jsonwebtoken')
 
 const db = "mongodb+srv://mongoadmin:mongo1234@cluster0-w4udq.mongodb.net/test?retryWrites=true&w=majority"
 
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
+  
 mongoose.connect(db, err => {
     if(err) {
         console.error('Error! ' + err)
